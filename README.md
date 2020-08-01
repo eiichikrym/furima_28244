@@ -18,6 +18,7 @@
 
 - has_many :items
 - has_many :comments
+- has_many :trade_histories
 
 ## items テーブル
 
@@ -38,6 +39,7 @@
 
 - belongs_to :user
 - has_one :address
+- has_one :trade_history
 - has_many :comments
 
 ## addresses テーブル
@@ -63,6 +65,18 @@
 | user_id | integer | null: false, foreign_key: true |
 | item_id | integer | null: false, foreign_key: true |
 | comment | text    |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
+## trade_histories テーブル
+
+| Column  | Type    | Options                        |
+| ------- | ------- | ------------------------------ |
+| user_id | integer | null: false, foreign_key: true |
+| item_id | integer | null: false, foreign_key: true |
 
 ### Association
 

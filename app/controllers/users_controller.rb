@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_path
     else
-      render template: "devise/registrations/new"
+      render template: 'devise/registrations/new'
     end
   end
 end

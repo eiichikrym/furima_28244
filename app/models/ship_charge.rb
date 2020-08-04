@@ -1,0 +1,2 @@
+class ShipCharge < ApplicationRecord
+end

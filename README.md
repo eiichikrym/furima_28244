@@ -26,7 +26,6 @@
 | -------------- | ------- | ----------- |
 | user_id        | integer | null: false, foreign_key: true |
 | price          | integer | null: false |
-| image          | text    | null: false |
 | name           | string  | null: false |
 | description    | text    | null: false |
 | category_id    | integer | null: false |
@@ -41,6 +40,12 @@
 - has_one :address
 - has_one :trade_history
 - has_many :comments
+- belongs_to_active_hash :category
+- belongs_to_active_hash :status
+- belongs_to_active_hash :ship_charge
+- belongs_to_active_hash :ship_region
+- belongs_to_active_hash :ship_day
+- has_one_attached :image
 
 ## addresses テーブル
 

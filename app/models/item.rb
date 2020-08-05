@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :ship_charge
   belongs_to_active_hash :ship_region
   belongs_to_active_hash :ship_day
-  
+
   has_one_attached :image
 
   with_options presence: true do
@@ -17,6 +17,6 @@ class Item < ApplicationRecord
     validates :ship_charge_id, numericality: { other_than: 1 }
     validates :ship_region_id, numericality: { other_than: 1 }
     validates :ship_day_id, numericality: { other_than: 1 }
-    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   end
 end

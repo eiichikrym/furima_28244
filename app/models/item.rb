@@ -6,10 +6,10 @@ class Item < ApplicationRecord
   belongs_to_active_hash :ship_region
   belongs_to_active_hash :ship_day
   
-  has_one_attached :photo
+  has_one_attached :image
 
   with_options presence: true do
-    validates :photo
+    validates :image
     validates :name
     validates :description
     validates :category_id, numericality: { other_than: 1 }

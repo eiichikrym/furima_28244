@@ -45,7 +45,7 @@
 - belongs_to_active_hash :ship_charge
 - belongs_to_active_hash :ship_region
 - belongs_to_active_hash :ship_day
-- has_one_attached :photo
+- has_one_attached :image
 
 ## addresses テーブル
 

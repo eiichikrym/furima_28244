@@ -4,7 +4,9 @@ class User < ApplicationRecord
   # , :validatable deviseの初期設定を外す
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
-
+  
+  has_many :items
+  
   with_options presence: true do
     validates :nickname
     validates :email, uniqueness: { case_sensitive: false }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }

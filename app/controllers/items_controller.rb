@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
+  before_action :move_to_index, except: [:index, :new, :show]
+
   def index
+    @items = Item.all.order("created_at DESC")
   end
 
   def new
@@ -19,9 +22,24 @@ class ItemsController < ApplicationController
     end
   end
 
-  private
+  def show
+    @item = Item.find(params[:id])
+  end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to root_path
+  end
+
+  private
   def item_params
     params.require(:item).permit(:price, :name, :description, :category_id, :status_id, :ship_charge_id, :ship_region_id, :ship_day_id, :image).merge(user_id: current_user.id)
+  end
+  
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
   end
 end

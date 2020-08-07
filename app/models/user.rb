@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable
 
   has_many :items
+  has_many :trades
 
   with_options presence: true do
     validates :nickname

@@ -18,7 +18,7 @@
 
 - has_many :items
 - has_many :comments
-- has_many :trade_histories
+- has_many :trades
 
 ## items テーブル
 
@@ -38,7 +38,7 @@
 
 - belongs_to :user
 - has_one :address
-- has_one :trade_history
+- has_one :trade
 - has_many :comments
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
@@ -76,7 +76,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## trade_histories テーブル
+## trades テーブル
 
 | Column  | Type    | Options                        |
 | ------- | ------- | ------------------------------ |

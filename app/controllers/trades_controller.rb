@@ -3,7 +3,7 @@ class TradesController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-    if user_signed_in? && (current_user.id == @item.user_id) 
+    if user_signed_in? && (current_user.id == @item.user_id)
       redirect_to root_path
     elsif user_signed_in?
       @trade = TradingInformation.new
@@ -23,12 +23,11 @@ class TradesController < ApplicationController
     end
   end
 
-private
+  private
+
   def check_trade
     @item = Item.find(params[:item_id])
-      if @item.trade != nil
-        redirect_to root_path
-      end
+    redirect_to root_path unless @item.trade.nil?
   end
 
   def trade_params

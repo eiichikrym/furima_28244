@@ -15,10 +15,9 @@
 | birthday         | date   | null: false |
 
 ### Association
-
 - has_many :items
-- has_many :comments
 - has_many :trades
+- has_many :comments
 
 ## items テーブル
 
@@ -35,17 +34,16 @@
 | ship_day_id    | integer | null: false |
 
 ### Association
-
-- belongs_to :user
-- has_one :address
 - has_one :trade
+- has_one :address
 - has_many :comments
+- has_one_attached :image
+- belongs_to :user
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
 - belongs_to_active_hash :ship_charge
 - belongs_to_active_hash :ship_region
 - belongs_to_active_hash :ship_day
-- has_one_attached :image
 
 ## addresses テーブル
 

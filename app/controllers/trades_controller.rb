@@ -15,6 +15,7 @@ class TradesController < ApplicationController
   def create
     @trade = TradingInformation.new(trade_params)
     if @trade.valid?
+      pay_item
       @trade.save
       redirect_to root_path
     else
@@ -25,6 +26,13 @@ class TradesController < ApplicationController
 
   private
 
+  def pay_item
+    @item = Item.find(params[:item_id])
+    order_params
+    Payjp.api_key = "sk_test_6e0bab1c53f5a9bb7b77dff0"  # PAY.JPテスト秘密鍵
+    Payjp::Charge.create( amount: @item.price, card: order_params[:token], currency:'jpy')
+  end
+
   def check_trade
     @item = Item.find(params[:item_id])
     redirect_to root_path unless @item.trade.nil?
@@ -32,5 +40,9 @@ class TradesController < ApplicationController
 
   def trade_params
     params.require(:trading_information).permit(:postcode, :state_id, :city, :block, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
+  end
+
+  def order_params
+    params.permit(:token)
   end
 end

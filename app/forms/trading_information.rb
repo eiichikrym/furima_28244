@@ -9,7 +9,6 @@ class TradingInformation
     validates :block
     # validates :building
     validates :phone_number, format: { with: /\A\d{11}\z/ }
-    
   end
 
   def save

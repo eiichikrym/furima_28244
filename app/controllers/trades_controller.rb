@@ -29,7 +29,7 @@ class TradesController < ApplicationController
   def pay_item
     @item = Item.find(params[:item_id])
     order_params
-    Payjp.api_key = 'sk_test_6e0bab1c53f5a9bb7b77dff0' # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # PAY.JPテスト秘密鍵
     Payjp::Charge.create(amount: @item.price, card: order_params[:token], currency: 'jpy')
   end
 
